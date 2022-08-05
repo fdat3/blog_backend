@@ -6,7 +6,7 @@ const userController = {
   },
 
   getItem: async (id) => {
-    return await userService.getItem(id);
+    return await userService.getItem();
   },
 
   create: async (params) => {

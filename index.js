@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const { userRouter } = require("./router");
+const { userRouter, employeeRoute } = require("./router");
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 app.use("/user", userRouter);
-
+app.use("/employee", employeeRoute);
 app.get("/", (req, res) => {
   res.json({
     message: "Hello World",

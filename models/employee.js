@@ -34,3 +34,5 @@ const Employee = sequelize.define("tbl_employees", {
     defaultValue: "ADMIN",
   },
 });
+
+module.exports = Employee;
