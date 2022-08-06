@@ -23,22 +23,21 @@ const User = sequelize.define(
         },
         dob: {
             type: Sequelize.DATE,
-            allowNull: true,
         },
         avatar: {
             type: Sequelize.STRING,
         },
-        folower_count: {
-            type: Sequelize.VITURAL(Sequelize.INTEGER),
-
+        follower_count: {
+            type: Sequelize.VIRTUAL(Sequelize.INTEGER),
+            get() {
+                return this.getDataValue("follower_count") || 0;
+            },
         },
         createdAt: {
             type: Sequelize.DATE,
-            allowNull: false,
         },
         updatedAt: {
             type: Sequelize.DATE,
-            allowNull: false,
         },
         deletedAt: {
             type: Sequelize.DATE,
@@ -46,27 +45,29 @@ const User = sequelize.define(
     },
     {
         hooks: {
-            beforeCreate: (item) => {
-                item.createdAt = new Date();
-                item.updateAt = new Date();
-            },
-
-            beforeUpdate: (item) => {
-                item.updateAt = new Date();
-            },
+            // beforeCreate: (item) => {
+            //     item.createdAt = new Date();
+            //     item.updateAt = new Date();
+            // },
+            //
+            // beforeUpdate: (item) => {
+            //     item.updateAt = new Date();
+            // },
         },
         timestamps: true,
-        underscored: true,
+        // updatedAt: 'updateAt',
+        // deletedAt: 'deleteAt',
+        underscored: false,
         freezeTableName: true,
         paranoid: true,
         defaultScope: {
             attributes: {exclude: ['password']},
         },
         scopes: {
-            deleted: {
-                where: {deletedAt: {$ne: null}},
-                paranoid: false,
-            },
+            // deleted: {
+            //     where: {deletedAt: {$ne: null}},
+            //     paranoid: false,
+            // },
         },
     }
 );
