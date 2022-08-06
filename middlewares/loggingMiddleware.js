@@ -1,6 +1,6 @@
-
 const morgan = require('morgan');
 const os = require('os');
+const {logService} = require('../service');
 //
 // morgan.token('conversation-id', function getConversationId(req) {
 //     return req.conversationId;
@@ -18,8 +18,8 @@ morgan.token('pid', function getPid() {
     return process.pid;
 });
 
-function jsonFormat(tokens, req, res) {
-    return JSON.stringify({
+async function jsonFormat(tokens, req, res) {
+    const result = {
         'remote-address': tokens['remote-addr'](req, res),
         'time': tokens['date'](req, res, 'iso'),
         'method': tokens['method'](req, res),
@@ -33,7 +33,13 @@ function jsonFormat(tokens, req, res) {
         'hostname': tokens['hostname'](req, res),
         // 'instance': tokens['instance-id'](req, res),
         'pid': tokens['pid'](req, res)
-    });
+    }
+
+    if (result['status-code'] >= 400) {
+        await logService.create(result);
+    }
+
+    return JSON.stringify(result);
     // return [
     //     tokens['remote-addr'](req, res),
     //     tokens['date'](req, res, 'iso'),

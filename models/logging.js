@@ -11,6 +11,10 @@ const Logging = sequelize.define(
         },
         level: {
             type: Sequelize.STRING,
+            validate: {
+                isIn: [['debug', 'info', 'warn', 'error']],
+            },
+            defaultValue: 'info',
         },
         message: {
             type: Sequelize.STRING,
@@ -68,4 +72,4 @@ const Logging = sequelize.define(
 // `sequelize.define` also returns the model
 // console.log(User === sequelize.models.User);
 
-module.exports = User;
+module.exports = Logging;

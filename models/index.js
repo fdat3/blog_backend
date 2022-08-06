@@ -38,6 +38,7 @@
 
 const User = require("./user");
 const Employee = require("./employee");
+const Logging = require("./logging");
 const {Sequelize, sequelize} = require("../config/databases");
 require("./associate")
 
@@ -46,4 +47,5 @@ module.exports = {
     sequelize,
     User,
     Employee,
+    Logging
 };
