@@ -39,6 +39,7 @@
 const User = require("./user");
 const Employee = require("./employee");
 const {Sequelize, sequelize} = require("../config/databases");
+require("./associate")
 
 module.exports = {
     Sequelize,
