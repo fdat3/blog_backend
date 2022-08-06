@@ -6,11 +6,10 @@ const userController = {
   },
 
   getItem: async (id) => {
-    return await userService.getItem();
+    return await userService.getItem(id);
   },
 
   create: async (params) => {
-    console.log(params);
     return await userService.create(params);
   },
 

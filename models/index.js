@@ -38,8 +38,11 @@
 
 const User = require("./user");
 const Employee = require("./employee");
+const {Sequelize, sequelize} = require("../config/databases");
 
 module.exports = {
-  User,
-  Employee,
+    Sequelize,
+    sequelize,
+    User,
+    Employee,
 };

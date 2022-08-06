@@ -14,15 +14,11 @@ const userService = {
   },
 
   create: async (params) => {
-    return await User.create(params);
+    return User.create(params);
   },
 
   update: async (id, params) => {
-    const findItem = await User.findOne({
-      where: {
-        id,
-      },
-    });
+    const findItem = await User.findByPk(id);
 
     if (!findItem) {
       throw new Error("Cannot find resource");
