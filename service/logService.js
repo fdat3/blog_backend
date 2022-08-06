@@ -11,12 +11,15 @@ const logService = {
 
     create: async (params) => {
         const ENV = process.env.NODE_ENV || 'development';
-        console.log(ENV)
 
         const body = {
             level: ENV === 'development' ? 'debug' : 'info',
             message: JSON.stringify(params),
-            rawJson: params
+            rawJson: params,
+            method: params.method,
+            status_code: params['status-code'],
+            session_id: params.session_id,
+            original_url: params.original_url,
         }
 
         return Logging.create(body);

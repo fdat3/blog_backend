@@ -19,6 +19,7 @@ morgan.token('pid', function getPid() {
 });
 
 async function jsonFormat(tokens, req, res) {
+    console.log(req)
     const result = {
         'remote-address': tokens['remote-addr'](req, res),
         'time': tokens['date'](req, res, 'iso'),
@@ -31,26 +32,22 @@ async function jsonFormat(tokens, req, res) {
         'user-agent': tokens['user-agent'](req, res),
         'session-id': tokens['session-id'](req, res),
         'hostname': tokens['hostname'](req, res),
+
         // 'instance': tokens['instance-id'](req, res),
-        'pid': tokens['pid'](req, res)
+        'pid': tokens['pid'](req, res),
+        // 'error': err ? err?.message ? err.message : err : null,
+        'original_url': req.originalUrl,
     }
 
+    console.log(`${result['time']} ${result['hostname']} ${result['pid']} ${result['method']} ${result['url']} ${result['status-code']}`)
+
     if (result['status-code'] >= 400) {
-        await logService.create(result);
+        setTimeout(() => {
+            logService.create(result);
+        }, 1);
     }
 
     return JSON.stringify(result);
-    // return [
-    //     tokens['remote-addr'](req, res),
-    //     tokens['date'](req, res, 'iso'),
-    //     tokens['method'](req, res),
-    //     tokens['url'](req, res),
-    //     tokens['http-version'](req, res),
-    //     tokens['status'](req, res),
-    //     tokens['res'](req, res, 'content-length'),
-    //     tokens['referrer'](req, res),
-    //     tokens['user-agent'](req, res),
-    // ]
 }
 
 module.exports = function loggingMiddleware() {

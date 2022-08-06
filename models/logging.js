@@ -16,6 +16,19 @@ const Logging = sequelize.define(
             },
             defaultValue: 'info',
         },
+        method: {
+            type: Sequelize.ENUM,
+            values: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+        },
+        session_id: {
+            type: Sequelize.STRING,
+        },
+        status_code: {
+            type: Sequelize.INTEGER,
+        },
+        original_url: {
+            type: Sequelize.STRING,
+        },
         message: {
             type: Sequelize.STRING,
         },
@@ -38,18 +51,8 @@ const Logging = sequelize.define(
     },
     {
         hooks: {
-            // beforeCreate: (item) => {
-            //     item.createdAt = new Date();
-            //     item.updateAt = new Date();
-            // },
-            //
-            // beforeUpdate: (item) => {
-            //     item.updateAt = new Date();
-            // },
         },
         timestamps: true,
-        // updatedAt: 'updateAt',
-        // deletedAt: 'deleteAt',
         underscored: false,
         freezeTableName: true,
         paranoid: true,
@@ -61,10 +64,19 @@ const Logging = sequelize.define(
             attributes: {exclude: []},
         },
         scopes: {
-            // deleted: {
-            //     where: {deletedAt: {$ne: null}},
-            //     paranoid: false,
-            // },
+            checked: {
+                where: {
+                    is_checked: true
+                },
+                order: [['updatedAt', 'DESC']],
+
+            },
+            unchecked: {
+                where: {
+                    is_checked: false
+                },
+                order: [['updatedAt', 'DESC']],
+            }
         },
     }
 );
