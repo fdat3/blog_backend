@@ -1,7 +1,7 @@
-const logMiddleware = require('./logMiddleware')
+const loggingMiddleware = require('./loggingMiddleware')
 const errorMiddleware = require('./errorMiddleware')
 
 module.exports = {
-    logMiddleware,
+    loggingMiddleware,
     errorMiddleware,
 }

@@ -6,11 +6,7 @@ const userService = {
   },
 
   getItem: async (id) => {
-    return await User.findOne({
-      where: {
-        id,
-      },
-    });
+    return await User.findByPk(id);
   },
 
   create: async (params) => {
