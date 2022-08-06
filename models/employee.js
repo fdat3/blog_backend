@@ -25,6 +25,10 @@ const Employee = sequelize.define("tbl_employees", {
     avatar: {
         type: Sequelize.STRING,
     },
+    active: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+    },
     follower_count: {
         type: Sequelize.VIRTUAL(Sequelize.INTEGER),
         get() {

@@ -33,6 +33,10 @@ const User = sequelize.define(
                 return this.getDataValue("follower_count") || 0;
             },
         },
+        active: {
+            type: Sequelize.BOOLEAN,
+            defaultValue: true,
+        },
         createdAt: {
             type: Sequelize.DATE,
         },
@@ -61,6 +65,9 @@ const User = sequelize.define(
         freezeTableName: true,
         paranoid: true,
         defaultScope: {
+            where: {
+              active: true
+            },
             attributes: {exclude: ['password']},
         },
         scopes: {
