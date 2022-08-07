@@ -1,7 +1,7 @@
 const { Setting } = require("../models");
 
 const settingService = {
-    getList: async () => {
+    getName: async () => {
         return await Setting.findAndCountAll();
     },
 
