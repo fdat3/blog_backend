@@ -19,7 +19,6 @@ morgan.token('pid', function getPid() {
 });
 
 async function jsonFormat(tokens, req, res) {
-    console.log(req)
     const result = {
         'remote-address': tokens['remote-addr'](req, res),
         'time': tokens['date'](req, res, 'iso'),
