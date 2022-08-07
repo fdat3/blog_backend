@@ -1,6 +1,6 @@
-const { employeeService } = require("../service");
+const { settingController } = require("../service");
 
-const employeeController = {
+const settingController = {
     getName: async () => {
         return await employeeService.getName();
     },
@@ -18,4 +18,4 @@ const employeeController = {
     },
 };
 
-module.exports = employeeController;
+module.exports = settingController;

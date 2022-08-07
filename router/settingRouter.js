@@ -1,11 +1,11 @@
 const express = require("express");
 
-const { employeeController } = require("../controller");
+const { settingController } = require("../controller");
 
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-    const result = await employeeController.getName();
+    const result = await settingController.getName();
 
     res.json({
         result,
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-    const result = await employeeController.getID(req.params.id);
+    const result = await settingController.getID(req.params.id);
 
     res.json({
         result,
@@ -21,7 +21,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    const result = await employeeController.create(req.body);
+    const result = await settingController.create(req.body);
 
     res.json({
         result,
@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/", async (req, res) => {
-    const result = await employeeController.update(req.params.id, req.body);
+    const result = await settingController.update(req.params.id, req.body);
 
     res.json({
         result,
@@ -37,7 +37,7 @@ router.put("/", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-    const result = await employeeController.delete(req.params.id);
+    const result = await settingController.delete(req.params.id);
 
     res.json({
         result,

@@ -1,4 +1,4 @@
-const {Sequelize, sequelize} = require("../config/databases");
+const { Sequelize, sequelize } = require("../config/databases");
 
 const Logging = sequelize.define(
     "tbl_logging",
@@ -12,13 +12,13 @@ const Logging = sequelize.define(
         level: {
             type: Sequelize.STRING,
             validate: {
-                isIn: [['debug', 'info', 'warn', 'error']],
+                isIn: [["debug", "info", "warn", "error"]],
             },
-            defaultValue: 'info',
+            defaultValue: "info",
         },
         method: {
             type: Sequelize.ENUM,
-            values: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+            values: ["GET", "POST", "PUT", "DELETE", "PATCH"],
         },
         session_id: {
             type: Sequelize.STRING,
@@ -47,36 +47,34 @@ const Logging = sequelize.define(
         },
         deletedAt: {
             type: Sequelize.DATE,
-        }
+        },
     },
     {
-        hooks: {
-        },
+        hooks: {},
         timestamps: true,
         underscored: false,
         freezeTableName: true,
         paranoid: true,
         defaultScope: {
             where: {
-                active: true
+                active: true,
             },
-            order: [['updatedAt', 'DESC']],
-            attributes: {exclude: []},
+            order: [["updatedAt", "DESC"]],
+            attributes: { exclude: [] },
         },
         scopes: {
             checked: {
                 where: {
-                    is_checked: true
+                    is_checked: true,
                 },
-                order: [['updatedAt', 'DESC']],
-
+                order: [["updatedAt", "DESC"]],
             },
             unchecked: {
                 where: {
-                    is_checked: false
+                    is_checked: false,
                 },
-                order: [['updatedAt', 'DESC']],
-            }
+                order: [["updatedAt", "DESC"]],
+            },
         },
     }
 );
