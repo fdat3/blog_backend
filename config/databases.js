@@ -2,10 +2,12 @@ const {Sequelize} = require("sequelize");
 const ENVIRONMENT = process.env.NODE_ENV || "development";
 const config = require('.')
 
+const configENV = config(ENVIRONMENT);
 
-console.log(config(ENVIRONMENT));
-
-const sequelize = new Sequelize("postgres://postgres:root@localhost:5432/test", {
+const sequelize = new Sequelize(configENV.DB_NAME, configENV.DB_USER_NAME, configENV.DB_PASSWORD, {
+    host: configENV.DB_HOST,
+    password: configENV.DB_PASSWORD,
+    dialect: 'postgres',
     pool: {
         max: 5,
         min: 0,
@@ -23,5 +25,7 @@ const connect = async () => {
         console.error("Unable to connect to the database:", error);
     }
 };
+
+setTimeout(() => connect(), 1)
 
 module.exports = {Sequelize, sequelize, connect};
