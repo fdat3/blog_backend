@@ -46,11 +46,9 @@ const Employee = sequelize.define("tbl_employees", {
     },
     createdAt: {
         type: Sequelize.DATE,
-        allowNull: false,
     },
     updatedAt: {
         type: Sequelize.DATE,
-        allowNull: false,
     },
     deletedAt: {
         type: Sequelize.DATE,
@@ -58,7 +56,7 @@ const Employee = sequelize.define("tbl_employees", {
 }, {
     hooks: {},
     timestamps: true,
-    underscored: true,
+    underscored: false,
     freezeTableName: true,
     paranoid: true,
     defaultScope: {
