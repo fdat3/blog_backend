@@ -1,4 +1,4 @@
-const {Sequelize, sequelize} = require("../config/databases");
+const { Sequelize, sequelize } = require("../config/databases");
 
 const User = sequelize.define(
     "tbl_users",
@@ -45,7 +45,7 @@ const User = sequelize.define(
         },
         deletedAt: {
             type: Sequelize.DATE,
-        }
+        },
     },
     {
         hooks: {
@@ -60,15 +60,15 @@ const User = sequelize.define(
         },
         timestamps: true,
         // updatedAt: 'updateAt',
-        // deletedAt: 'deleteAt',
+        // deletedAt: "deleteAt",
         underscored: false,
         freezeTableName: true,
         paranoid: true,
         defaultScope: {
             where: {
-              active: true
+                active: true,
             },
-            attributes: {exclude: ['password']},
+            attributes: { exclude: ["password"] },
         },
         scopes: {
             // deleted: {
