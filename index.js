@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 // const multer = require("multer");
 const compression = require("compression");
 const helmet = require("helmet");
@@ -52,6 +53,8 @@ app.use((err, req, res, next) => {
         next()
     }
 })
+
+app.use('/*', cors())
 
 app.use("/user", userRouter);
 app.use("/employee", employeeRoute);
