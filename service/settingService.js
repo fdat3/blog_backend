@@ -1,12 +1,12 @@
-const { Logging } = require("../models");
+const { Setting } = require("../models");
 
-const logService = {
+const settingService = {
     getList: async () => {
-        return await Logging.findAndCountAll();
+        return await Setting.findAndCountAll();
     },
 
     getItem: async (id) => {
-        return await Logging.findByPk(id);
+        return await Setting.findByPk(id);
     },
 
     create: async (params) => {
@@ -22,11 +22,11 @@ const logService = {
             original_url: params.original_url,
         };
 
-        return Logging.create(body);
+        return Setting.create(body);
     },
 
     update: async (id, params) => {
-        const findItem = await Logging.findByPk(id);
+        const findItem = await Setting.findByPk(id);
 
         if (!findItem) {
             throw new Error("Cannot find resource");
@@ -40,7 +40,7 @@ const logService = {
     },
 
     delete: async (id) => {
-        return await Logging.destroy({
+        return await Setting.destroy({
             where: {
                 id,
             },
@@ -48,4 +48,4 @@ const logService = {
     },
 };
 
-module.exports = logService;
+module.exports = settingService;
