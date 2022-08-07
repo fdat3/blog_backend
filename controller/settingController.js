@@ -1,20 +1,20 @@
-const { settingController } = require("../service");
+const { settingService } = require("../service");
 
 const settingController = {
     getName: async () => {
-        return await employeeService.getName();
+        return await settingService.getName();
     },
     getID: async (id) => {
-        return await employeeService.getID(id);
+        return await settingService.getID(id);
     },
     create: async (params) => {
-        return await employeeService.create(params);
+        return await settingService.create(params);
     },
     update: async (id, params) => {
-        return await employeeService.update(id, params);
+        return await settingService.update(id, params);
     },
     delete: async (id) => {
-        return await employeeService.delete(id);
+        return await settingService.delete(id);
     },
 };
 
