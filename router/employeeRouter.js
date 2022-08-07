@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
   });
 });
 
-router.put("/", async (req, res) => {
+router.put("/:id", async (req, res) => {
   const result = await employeeController.update(req.params.id, req.body);
 
   res.json({

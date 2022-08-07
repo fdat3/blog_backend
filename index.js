@@ -6,7 +6,7 @@ const helmet = require("helmet");
 
 const { errorMiddleware, loggingMiddleware } = require("./middlewares");
 
-const {userRouter, employeeRoute} = require("./router");
+const {userRouter, employeeRoute, authRouter} = require("./router");
 require('dotenv').config()
 const app = express();
 
@@ -23,7 +23,7 @@ app.use(helmet());
 //
 // }))
 app.use(errorMiddleware.errorMiddleware)
-app.use(loggingMiddleware())
+// app.use(loggingMiddleware())
 
 // documentation
 // https://expressjs.com/en/api.html
@@ -36,8 +36,25 @@ app.use(bodyParser.json());
 
 app.disable('x-powered-by');
 
+app.use((err, req, res, next) => {
+    if (err) {
+        console.log(err);
+        res.status(err.status || 500).json({
+            message: err.message || "Internal server error",
+            error: err,
+        });
+        next(err)
+    } else {
+        next()
+    }
+})
+
 app.use("/user", userRouter);
 app.use("/employee", employeeRoute);
+app.use('/auth', authRouter);
+
+
+
 app.get("/", (req, res) => {
     res.json({
         message: "Hello World",

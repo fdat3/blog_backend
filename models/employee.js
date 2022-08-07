@@ -67,6 +67,9 @@ const Employee = sequelize.define("tbl_employees", {
         //     where: {deletedAt: {$ne: null}},
         //     paranoid: false,
         // },
+        withPassword: {
+            attributes: {include: ['password']},
+        }
     },
 });
 

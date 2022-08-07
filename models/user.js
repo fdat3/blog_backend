@@ -77,6 +77,9 @@ const User = sequelize.define(
             //     where: {deletedAt: {$ne: null}},
             //     paranoid: false,
             // },
+            withPassword: {
+                attributes: { include: ["password"] },
+            }
         },
     }
 );
