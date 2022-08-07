@@ -1,0 +1,10 @@
+require('dotenv').config();
+const ENV = process.env
+
+module.exports = {
+    DB_USER_NAME: ENV.DB_PRODUCTION_NAME,
+    DB_PASSWORD: ENV.DB_PRODUCTION_PASSWORD,
+    DB_NAME: ENV.DB_PRODUCTION_NAME,
+    DB_HOST: ENV.DB_PRODUCTION_HOST,
+    DB_PORT: ENV.DB_PRODUCTION_PORT,
+}

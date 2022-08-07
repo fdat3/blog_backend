@@ -1,4 +1,9 @@
 const {Sequelize} = require("sequelize");
+const ENVIRONMENT = process.env.NODE_ENV || "development";
+const config = require('.')
+
+
+console.log(config(ENVIRONMENT));
 
 const sequelize = new Sequelize("postgres://postgres:root@localhost:5432/test", {
     pool: {

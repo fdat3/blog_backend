@@ -56,8 +56,8 @@ app.use((err, req, res, next) => {
 app.use("/user", userRouter);
 app.use("/employee", employeeRoute);
 app.use('/auth', authRouter);
-
 app.use("/setting", settingRoute);
+
 app.get("/", (req, res) => {
     res.json({
         message: "Hello World",
