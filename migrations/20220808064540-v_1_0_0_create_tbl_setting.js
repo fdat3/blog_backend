@@ -21,14 +21,14 @@ module.exports = {
                 type: Sequelize.UUID,
             },
             createdAt: {
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
             },
             updatedAt: {
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
             },
             deletedAt: {
-                type: Sequelize.DATE
-            }
+                type: Sequelize.DATE,
+            },
         });
     },
 

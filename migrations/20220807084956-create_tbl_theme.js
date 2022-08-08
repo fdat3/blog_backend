@@ -24,14 +24,14 @@ module.exports = {
                 type: Sequelize.JSONB,
             },
             createdAt: {
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
             },
             updatedAt: {
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
             },
             deletedAt: {
-                type: Sequelize.DATE
-            }
+                type: Sequelize.DATE,
+            },
         });
     },
 
