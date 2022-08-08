@@ -30,7 +30,7 @@ const Logging = sequelize.define(
             type: Sequelize.STRING,
         },
         message: {
-            type: Sequelize.STRING,
+            type: Sequelize.TEXT,
         },
         is_checked: {
             type: Sequelize.BOOLEAN,

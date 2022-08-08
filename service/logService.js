@@ -9,6 +9,14 @@ const logService = {
         return await Logging.findByPk(id);
     },
 
+    createRawError: async ({error, status_code = 500}) => {
+        await Logging.create({
+            level: "error",
+            message: JSON.stringify(error),
+            status_code: status_code
+        });
+    },
+
     create: async (params) => {
         const ENV = process.env.NODE_ENV || "development";
 
