@@ -7,7 +7,13 @@ const helmet = require("helmet");
 
 const { errorMiddleware, loggingMiddleware } = require("./middlewares");
 
-const { userRouter, employeeRoute, settingRoute, authRouter } = require("./router");
+const {
+    userRouter,
+    employeeRoute,
+    settingRoute,
+    authRouter,
+    themeRoute,
+} = require("./router");
 require("dotenv").config();
 const app = express();
 
@@ -25,7 +31,7 @@ app.use(helmet());
 //     skip: function (req, res) { return res.statusCode < 400 }
 //
 // }))
-app.use(errorMiddleware.errorMiddleware)
+app.use(errorMiddleware.errorMiddleware);
 // app.use(loggingMiddleware())
 
 // documentation
@@ -52,7 +58,7 @@ app.use((err, req, res, next) => {
     } else {
         next();
     }
-})
+});
 
 app.use("/user", userRouter);
 app.use("/employee", employeeRoute);
