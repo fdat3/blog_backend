@@ -3,18 +3,35 @@ const { Sequelize, sequelize } = require("../config/databases");
 const Theme = sequelize.define("tbl_theme", {
     id: {
         primaryKey: true,
-        type: Sequelize.ENUM("MAIN" | "ORDER"),
+        type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
     },
-    tilte: {
+    title: {
         type: Sequelize.STRING,
     },
     settings: {
         type: Sequelize.JSONB,
     },
-
-    associate(models) {
-        Theme.belongsTo(models.setting, { foreignKey: "id" });
+    createdAt: {
+        type: Sequelize.DATE,
+    },
+    updatedAt: {
+        type: Sequelize.DATE,
+    },
+    deletedAt: {
+        type: Sequelize.DATE,
+    },
+}, {
+    hooks: {},
+    timestamps: true,
+    underscored: false,
+    freezeTableName: true,
+    paranoid: true,
+    defaultScope: {},
+    scopes: {
+        deleted: {
+            paranoid: false
+        }
     },
 });
 
