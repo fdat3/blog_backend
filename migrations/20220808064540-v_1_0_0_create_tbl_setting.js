@@ -21,6 +21,15 @@ module.exports = {
                 type: Sequelize.UUID,
                 defaultValue: Sequelize.UUIDV4,
             },
+            createdAt: {
+                type: Sequelize.DATE
+            },
+            updatedAt: {
+                type: Sequelize.DATE
+            },
+            deletedAt: {
+                type: Sequelize.DATE
+            }
         });
     },
 

@@ -14,7 +14,7 @@ module.exports = {
         return queryInterface.createTable("tbl_theme", {
             id: {
                 primaryKey: true,
-                type: Sequelize.ENUM("MAIN" | "ORDER"),
+                type: Sequelize.UUID,
                 defaultValue: Sequelize.UUIDV4,
             },
             title: {
@@ -23,6 +23,15 @@ module.exports = {
             settings: {
                 type: Sequelize.JSONB,
             },
+            createdAt: {
+                type: Sequelize.DATE
+            },
+            updatedAt: {
+                type: Sequelize.DATE
+            },
+            deletedAt: {
+                type: Sequelize.DATE
+            }
         });
     },
 
