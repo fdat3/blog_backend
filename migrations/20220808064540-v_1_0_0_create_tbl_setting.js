@@ -12,14 +12,13 @@ module.exports = {
             id: {
                 type: Sequelize.UUID,
                 defaultValue: Sequelize.UUIDV4,
+                primaryKey: true,
             },
             banner_id: {
                 type: Sequelize.UUID,
-                defaultValue: Sequelize.UUIDV4,
             },
             theme_id: {
                 type: Sequelize.UUID,
-                defaultValue: Sequelize.UUIDV4,
             },
             createdAt: {
                 type: Sequelize.DATE
