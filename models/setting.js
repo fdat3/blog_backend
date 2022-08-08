@@ -8,9 +8,17 @@ const Setting = sequelize.define("tbl_setting", {
     },
     banner_id: {
         type: Sequelize.UUID,
+        references: {
+            model: "tbl_banner",
+            key: "id",
+        },
     },
     theme_id: {
         type: Sequelize.UUID,
+        references: {
+            model: "tbl_theme",
+            key: "id",
+        },
     },
     createdAt: {
         type: Sequelize.DATE,
