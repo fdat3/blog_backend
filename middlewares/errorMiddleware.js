@@ -1,11 +1,15 @@
 const errorMiddleware = (err, req, res, next) => {
-    console.log('errorMiddleware')
-    console.log(err)
-    next(err)
-    res.status(500).json({
-        message: err.message || "Something went wrong",
-        stack: err.stack,
-    });
+    if (err) {
+        console.log('errorMiddleware')
+        console.log(err)
+        next(err)
+        res.status(500).json({
+            message: err.message || "Something went wrong",
+            stack: err.stack,
+        });
+    } else {
+        next();
+    }
 }
 
 const asyncHandler = (fn) => {
