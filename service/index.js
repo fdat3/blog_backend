@@ -5,6 +5,9 @@ const authService = require("./authService");
 const settingService = require("./settingService");
 const logService = require("./logService");
 const themeService = require("./themeService");
+const blogService = require("./blogService");
+const commentService = require("./commentService");
+const likeService = require("./likeService")
 
 module.exports = {
     crudBaseService,
@@ -14,4 +17,7 @@ module.exports = {
     settingService,
     authService,
     themeService,
+    blogService,
+    commentService,
+    likeService,
 };

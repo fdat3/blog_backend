@@ -1,16 +1,23 @@
-'use strict';
-const {
-    Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-    class tbl_like extends Model {
-        static associate(models) {
-        }
+const { Sequelize, sequelize } = require("../config/databases");
+
+const Like = sequelize.define("tbl_like", {
+    id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        primaryKey: true,
+    },
+    blog_id: {
+        type: Sequelize.UUID,
+    },
+    user_id: {
+        type: Sequelize.UUID,
+    },
+    employee_id: {
+        type: Sequelize.UUID,
+    },
+    comment_id: {
+        type: Sequelize.UUID,
     }
-    tbl_like.init({
-    }, {
-        sequelize,
-        modelName: 'tbl_like',
-    });
-    return tbl_like;
-};
+});
+
+module.exports = Like;

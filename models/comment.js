@@ -1,18 +1,26 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class tbl_comment extends Model {
-    static associate(models) {
-    }
+const { Sequelize, sequelize } = require("../config/databases");
+
+const Comment = sequelize.define("tbl_comment", {
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
+  },
+  blog_id: {
+    type: Sequelize.UUID,
+  },
+  user_id: {
+    type: Sequelize.UUID,
+  },
+  employee_id: {
+    type: Sequelize.UUID,
+  },
+  content: {
+    type: Sequelize.TEXT,
+  },
+  image: {
+    type: Sequelize.STRING,
   }
-  tbl_comment.init({
-    content: DataTypes.TEXT,
-    image: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'tbl_comment',
-  });
-  return tbl_comment;
-};
+});
+
+module.exports = Comment;

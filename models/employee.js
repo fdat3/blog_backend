@@ -74,3 +74,5 @@ const Employee = sequelize.define("tbl_employees", {
 });
 
 module.exports = Employee;
+
+
