@@ -1,4 +1,4 @@
-const {Sequelize, sequelize} = require("../config/databases");
+const { Sequelize, sequelize } = require("../config/databases");
 
 const Employee = sequelize.define("tbl_employees", {
     id: {
@@ -60,7 +60,7 @@ const Employee = sequelize.define("tbl_employees", {
     freezeTableName: true,
     paranoid: true,
     defaultScope: {
-        attributes: {exclude: ['password']},
+        attributes: { exclude: ['password'] },
     },
     scopes: {
         // deleted: {
@@ -68,7 +68,7 @@ const Employee = sequelize.define("tbl_employees", {
         //     paranoid: false,
         // },
         withPassword: {
-            attributes: {include: ['password']},
+            attributes: { include: ['password'] },
         }
     },
 });
