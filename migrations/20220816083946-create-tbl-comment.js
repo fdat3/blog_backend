@@ -3,9 +3,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('tbl_comments', {
       id: {
-        type: Sequelize.UUID,
-        primaryKey: true,
-        defaultValue: Sequelize.UUIDV4
+        type: Sequelize.UUID
       },
       content: {
         type: Sequelize.TEXT

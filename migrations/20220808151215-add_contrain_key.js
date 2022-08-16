@@ -10,7 +10,7 @@ module.exports = {
          */
         return queryInterface.sequelize.transaction(async (transaction) => {
             console.log('create banner table')
-            await queryInterface.createTable('tbl_banner', {
+            await queryInterface.createTable('tbl_banners', {
                 id: {
                     type: Sequelize.UUID,
                     primaryKey: true,
@@ -38,7 +38,7 @@ module.exports = {
                 deletedAt: {
                     type: Sequelize.DATE,
                 }
-            }, {transaction});
+            }, { transaction });
 
             console.log('created banner table')
 
@@ -86,7 +86,7 @@ module.exports = {
         return queryInterface.sequelize.transaction(async (transaction) => {
             // await queryInterface.removeConstraint('tbl_setting', 'banner_setting_key', {transaction});
             // await queryInterface.removeConstraint('tbl_setting', 'theme_setting_key', {transaction});
-            await queryInterface.dropTable('tbl_banner', {transaction});
+            await queryInterface.dropTable('tbl_banners', { transaction });
         })
     }
 };

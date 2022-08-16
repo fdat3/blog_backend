@@ -32,6 +32,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('tbl_comments');
+    await queryInterface.dropTable('tbl_likes');
   }
 };
