@@ -37,6 +37,18 @@ const Setting = sequelize.define("tbl_setting", {
     paranoid: true,
     defaultScope: {},
     scopes: {
+        banner: {
+            where: {
+                banner_id: {$ne: null},
+                theme_id: {$eq: null}
+            }
+        },
+        theme: {
+            where: {
+                banner_id: {$eq: null},
+                theme_id: {$ne: null}
+            }
+        },
         deleted: {
             paranoid: false
         }
