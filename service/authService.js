@@ -1,9 +1,9 @@
-const {Employee, User} = require('../models');
+const { Employee, User } = require('../models');
 const bcrypt = require('bcryptjs');
 const SALT = 10;
 
 const authService = {
-    employeeLogin: async ({username, password}) => {
+    employeeLogin: async ({ username, password }) => {
         const findEmployee = await Employee.scope('withPassword').findOne({
             where: {
                 username
@@ -24,7 +24,7 @@ const authService = {
         return findEmployee
     },
     employeeRegister: async (params) => {
-        const {username, password} = params
+        const { username, password } = params
         // check existing username
         const findEmployee = await Employee.findOne({
             where: {
@@ -44,7 +44,7 @@ const authService = {
             password: hashPassword,
         });
     },
-    userInAppLogin: async ({username, password}) => {
+    userInAppLogin: async ({ username, password }) => {
         const findUser = await User.scope('withPassword').findOne({
             where: {
                 username
@@ -65,7 +65,7 @@ const authService = {
         return findUser
     },
     userRegister: async (params) => {
-        const {username, password} = params
+        const { username, password } = params
         const findExistUser = await User.findOne({
             where: {
                 username

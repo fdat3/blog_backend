@@ -41,6 +41,7 @@ const Employee = require("./employee");
 const Logging = require("./logging");
 const Setting = require("./setting");
 const Theme = require("./theme");
+const Blog = require("./blog")
 
 const { Sequelize, sequelize } = require("../config/databases");
 require("./associate");
@@ -53,4 +54,5 @@ module.exports = {
     Logging,
     Setting,
     Theme,
+    Blog,
 };
