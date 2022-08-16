@@ -6,5 +6,5 @@ module.exports = function (env) {
         return development;
     } else if (env === 'production') {
         return production;
-    }
+    } else return development
 }

@@ -7,7 +7,10 @@ module.exports = {
         "password": ENV.DB_DEVELOP_PASSWORD,
         "database": ENV.DB_DEVELOP_NAME,
         "host": ENV.DB_DEVELOP_HOST,
-        "dialect": "postgres",
+        "dialect": "postgresql",
+        "dialectOptions": {
+            bigNumberStrings: true,
+        },
         "operatorsAliases": false,
         "pool": {
             "max": 100,
@@ -33,12 +36,15 @@ module.exports = {
         "logging": false
     },
     "production": {
-        "username": ENV.DB_DEVELOP_USERNAME,
-        "password": ENV.DB_DEVELOP_PASSWORD,
-        "database": ENV.DB_DEVELOP_NAME,
-        "host": ENV.DB_DEVELOP_HOST,
+        "username": ENV.DB_PRODUCTION_USERNAME,
+        "password": ENV.DB_PRODUCTION_PASSWORD,
+        "database": ENV.DB_PRODUCTION_NAME,
+        "host": ENV.DB_PRODUCTION_HOST,
         "dialect": "postgres",
-        "operatorsAliases": false,
+        "dialectOptions": {
+            bigNumberStrings: true,
+        },
+        "port": 5432,
         "pool": {
             "max": 100,
             "min": 0,
