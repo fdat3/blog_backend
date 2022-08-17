@@ -7,7 +7,7 @@ module.exports = {
         "password": ENV.DB_DEVELOP_PASSWORD,
         "database": ENV.DB_DEVELOP_NAME,
         "host": ENV.DB_DEVELOP_HOST,
-        "dialect": "postgresql",
+        "dialect": "postgres",
         "dialectOptions": {
             bigNumberStrings: true,
         },
